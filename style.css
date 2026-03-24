@@ -15,7 +15,7 @@
 .right{
     width: 75vw;
 }
-.home{
+.p-1{
     padding: 10px;
 }
 
@@ -25,4 +25,5 @@
     display: flex;
     gap: 15px;
     padding-top: 14px;
+    font-weight: bold;
 }
