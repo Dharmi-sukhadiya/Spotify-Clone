@@ -2,10 +2,10 @@
     margin: 0;
     padding: 0;
 }
-/* body{
+body{
     background-color: #000000;
     color: white;
-} */
+}
 
 .left{
     width: 25vw;
@@ -42,7 +42,7 @@
     width:19px;
 }
 .library{
-    min-height: 50vh;
+    min-height: 70vh;
     position: relative;
 }
 .footer{
@@ -55,4 +55,16 @@
 }
 .footer a{
     color: grey;
+}
+.right{
+    margin: 16px 0;
+}
+.header{
+    display: flex;
+    justify-content: space-between;
+    background-color: rgb(26, 21, 21);
+}
+.header > *{
+    padding: 10px;
+    
 }
