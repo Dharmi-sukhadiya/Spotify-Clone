@@ -42,7 +42,7 @@ body{
     width:19px;
 }
 .library{
-    min-height: 70vh;
+    min-height: 73vh;
     position: relative;
 }
 .footer{
@@ -84,9 +84,13 @@ body{
     display: flex;
     flex-wrap: wrap;
     gap: 6px;
+    overflow-y: scroll;
+    max-height: 73vh;
+     scrollbar-width: thin;
+  scrollbar-color: #2a2a2a #121212;
  }
  .card{
-    width: 160px;
+    width: 147px;
     padding: 10px;
     background-color: #121212;
     border-radius: 8px;
