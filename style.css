@@ -68,6 +68,11 @@ body{
     padding: 10px;
     
 }
+.header .nav{
+    justify-content: center;
+    align-items: center;
+    padding-top: 19px;
+}
 .spotifyplaylist{
     padding: 16px;
    
@@ -122,14 +127,40 @@ body{
   opacity: 1;
   transform: translateY(0);
 }
+.buttons > *{
+   margin: 0 12px; 
+/* top-bottom left-right */
+}
 .Signupbtn{
   font-weight: bolder;
   background-color: black;
   color: rgb(126, 122, 122);
   border: 0;
   outline: none;
+  cursor: pointer;
+  font-size: 16px;
 }
 .Signupbtn:hover{
-    font-size: 1rem;
-    color:white;
+  font-size: 17px;
+  color:white;
+}
+.Loginbtn{
+  background-color: white;
+  border-radius: 21px;
+  color:black;
+  font-weight: bolds;
+  cursor: pointer;
+  padding: 10px;
+  width: 79px;
+  font-size: 16px;
+}
+.Loginbtn:hover{
+  background-color: white;
+  border-radius: 21px;
+  color:black;
+  font-weight: bolder;
+  cursor: pointer;
+  padding: 10px;
+  width: 80px;
+  font-size: 17px;
 }
