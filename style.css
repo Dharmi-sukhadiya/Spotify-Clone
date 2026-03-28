@@ -95,7 +95,7 @@ body{
     background-color: #121212;
     border-radius: 8px;
     padding-top: 10px;
-    
+    cursor: pointer;
   position: relative;
 }
  .card img{
@@ -121,4 +121,15 @@ body{
 .card:hover .play {
   opacity: 1;
   transform: translateY(0);
+}
+.Signupbtn{
+  font-weight: bolder;
+  background-color: black;
+  color: rgb(126, 122, 122);
+  border: 0;
+  outline: none;
+}
+.Signupbtn:hover{
+    font-size: 1rem;
+    color:white;
 }
