@@ -169,13 +169,22 @@ body{
 .playbar{
   position: absolute;
   bottom: 0;
-  background-color: #46b872;
-  width: 100%;
+  background-color: #565856;
+  width: 95%;
   padding: 5px;
   /* padding-top: 3px; */
   /* justify-content: center;
   align-items: center; */
 }
 .songbuttons{
-    
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+}
+.songlist ul{
+  padding: 0 32px; 
+/* * */
+}
+.songlist ul li{
+    list-style-type: decimal;
 }
