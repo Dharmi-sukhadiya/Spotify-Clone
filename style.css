@@ -171,5 +171,11 @@ body{
   bottom: 0;
   background-color: #46b872;
   width: 100%;
-  padding: 12px;
+  padding: 5px;
+  /* padding-top: 3px; */
+  /* justify-content: center;
+  align-items: center; */
+}
+.songbuttons{
+    
 }
