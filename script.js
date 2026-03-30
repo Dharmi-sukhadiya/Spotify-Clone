@@ -24,9 +24,10 @@ let songs = await getsongs()
 console.log(songs)
 //play the first song
 
-let songul = document.querySelector(".songlist").getElementsByTagName("ul")
+let songul = document.querySelector(".songlist").getElementsByTagName("ul")[0]
+songul.innerHTML="";//clear first
 for (const song of songs) {
-    songul.innerHTML=songul.innerHTML+song;
+    songul.innerHTML=songul.innerHTML+ `<li>${song}</li>`;
     
     
 }
