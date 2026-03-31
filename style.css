@@ -193,3 +193,7 @@ body{
     cursor: pointer;
     padding: 12px 0;
 }
+.playnow{
+    display: flex;
+    
+}
