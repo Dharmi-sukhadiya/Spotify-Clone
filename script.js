@@ -25,7 +25,7 @@ console.log(songs)
 //play the first song
 
 let songul = document.querySelector(".songlist").getElementsByTagName("ul")[0]
-songul.innerHTML="";//clear first
+// songul.innerHTML="";//clear first
 for (const song of songs) {
     songul.innerHTML=songul.innerHTML+ `<li>${song.replaceAll("%20"," ")} </li>`;
     
