@@ -181,21 +181,26 @@ body{
     justify-content: center;
     gap: 16px;
 }
+.songlist{
+    height: 344px;
+    overflow: auto;
+}
 .songlist ul{
-  padding: 0 20px; 
-/* * */
+  padding: 0 10px; 
+/* 20 */
 }
 .songlist ul li{
     list-style-type: decimal;
     display: flex;
-    gap: 15px; 
-    /* * */
+    gap: 10px; 
+    /* 15 */
     cursor: pointer;
-    padding: 12px 0;
+    padding: 12px 5px;
     border: 1px solid white;
     margin: 12px 0;
     /* padding: 13px; */
     border-radius: 5px;
+    justify-content: space-between;
 }
 .playnow{
     display: flex;
@@ -209,5 +214,6 @@ body{
     padding: 12px;
 }
 .info{
-    font-size: small;
+    font-size: 12px;
+    width: 344px;
 }
