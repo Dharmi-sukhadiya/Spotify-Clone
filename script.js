@@ -18,28 +18,41 @@ async function getsongs() {
     return songs;
 }
 
-async function main(){
+async function main() {
     //get the list of all songs
-let songs = await getsongs()
-console.log(songs)
-//play the first song
+    let songs = await getsongs()
+    console.log(songs)
+    //play the first song
 
-let songul = document.querySelector(".songlist").getElementsByTagName("ul")[0]
-// songul.innerHTML="";//clear first
-for (const song of songs) {
-    songul.innerHTML=songul.innerHTML+ `<li>${song.replaceAll("%20"," ")} </li>`;
-    
-    
-}
+    let songul = document.querySelector(".songlist").getElementsByTagName("ul")[0]
+    // songul.innerHTML="";//clear first
+    for (const song of songs) {
+        songul.innerHTML = songul.innerHTML + `<li>
+   
+                            <img class="invert" src="music.svg" alt="">
+                            <div class="info">
+                                <div> ${song.replaceAll("%20", " ")}</div>
+                                <div>song artist</div>
+                            </div>
+                            <div class="playnow">
+                                <span>Play Now</span>
+                            <img class="invert" src="play.svg" alt="">
+                            </div>
+                    
 
-var audio = new Audio(songs[0]);
-audio.play();
+    </li>`;
 
-audio.addEventListener("loadeddata", () => {
-//   let duration = audio.duration;
-  console.log(audio.duration,audio.currentSrc,audio.currentTime);
-  // The duration variable now holds the duration (in seconds) of the audio clip1
-});
+
+    }
+
+    var audio = new Audio(songs[0]);
+    audio.play();
+
+    audio.addEventListener("loadeddata", () => {
+        //   let duration = audio.duration;
+        console.log(audio.duration, audio.currentSrc, audio.currentTime);
+        // The duration variable now holds the duration (in seconds) of the audio clip1
+    });
 }
 
 main()
