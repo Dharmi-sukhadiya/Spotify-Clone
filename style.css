@@ -168,6 +168,7 @@ body{
 
 .playbar{
   position: absolute;
+  /* position: fixed; */
   bottom: 0;
   background-color: #565856;
   width: 95%;
@@ -175,6 +176,7 @@ body{
   /* padding-top: 3px; */
   /* justify-content: center;
   align-items: center; */
+  /* padding-left: 0%; */
 }
 .songbuttons{
     display: flex;
@@ -184,6 +186,7 @@ body{
 .songlist{
     height: 344px;
     overflow: auto;
+    margin-bottom: 8px;
 }
 .songlist ul{
   padding: 0 10px; 
