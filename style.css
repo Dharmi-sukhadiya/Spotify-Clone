@@ -227,14 +227,15 @@ body{
 .seekbar{
     height: 2px;
     width: 98%;
-    border: 2px solid black;
+    background:  black;
     position: absolute;
     bottom: 3px;
-    border-radius: 10px;
+    border-radius: 1px;
+    margin: 3px;
 }
 .circle{
-    width: 13px;
-    height: 13px;
+    width: 11px;
+    height: 11px;
     border-radius: 13px;
     background: black;
     position: relative;
