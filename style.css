@@ -170,13 +170,17 @@ body{
   position: absolute;
   /* position: fixed; */
   bottom: 0;
-  background-color: #565856;
+  /* background-color: #565856; */
   width: 95%;
   padding: 5px;
+  height: 35px;
   /* padding-top: 3px; */
   /* justify-content: center;
   align-items: center; */
   /* padding-left: 0%; */
+  filter: invert(1);
+  background: #cfcbcb;
+  border-radius: 30px;
 }
 .songbuttons{
     display: flex;
@@ -219,4 +223,21 @@ body{
 .info{
     font-size: 12px;
     width: 344px;
+}
+.seekbar{
+    height: 2px;
+    width: 98%;
+    border: 2px solid black;
+    position: absolute;
+    bottom: 3px;
+    border-radius: 10px;
+}
+.circle{
+    width: 13px;
+    height: 13px;
+    border-radius: 13px;
+    background: black;
+    position: relative;
+    bottom: 6px;
+    left: 0%;
 }
