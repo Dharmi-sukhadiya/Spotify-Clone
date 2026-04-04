@@ -230,8 +230,8 @@ body{
     background:  black;
     position: absolute;
     bottom: 3px;
-    border-radius: 1px;
-    margin: 3px;
+    border-radius: 10px;
+    margin: 6px;
 }
 .circle{
     width: 11px;
@@ -239,6 +239,7 @@ body{
     border-radius: 13px;
     background: black;
     position: relative;
-    bottom: 6px;
+    bottom: 5px;
     left: 0%;
+    transition: left 0.5s;
 }
