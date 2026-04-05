@@ -23,6 +23,9 @@ const playmusic=(track)=>{
     // let audio =new Audio("/song/"+track)
     currentsong.src="/songs/"+track.trim();
     currentsong.play();
+    play.src="pause.svg"
+    document.querySelector(".songinfo").innerHTML=track
+    document.querySelector(".songtime").innerHTML="00:00/00:00"
 }
 
 async function main() {
@@ -58,10 +61,28 @@ async function main() {
 Array.from(document.querySelector(".songlist").getElementsByTagName("li")).forEach(e=>{
     e.addEventListener("click",Element=>{
         console.log(e.querySelector(".info").firstElementChild.innerHTML)
-        playmusic(e.querySelector(".info").firstElementChild.innerHTML)
+        playmusic(e.querySelector(".info").firstElementChild.innerHTML.trim())
     })
     
 })
+//attach an event listner to play,next and previous
+play.addEventListener("click",()=>{
+    if(currentsong.paused){
+        currentsong.play()
+        play.src="pause.svg"
+        
+        }
+        else{
+            currentsong.pause()
+            play.src="play.svg"
+        }
+})
+//listnet for time update event
+currentsong.addEventListener("timeupdate",()=>{
+    console.log(currentsong.currentTime,currentsong.duration);
+    
+})
 }
+
 
 main()
