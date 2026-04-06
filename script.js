@@ -1,5 +1,23 @@
 console.log("js")
  let currentsong=new Audio();
+
+ function secondsToMinutesSeconds(seconds) {
+    if (isNaN(seconds)) return "00:00";
+
+    let minutes = Math.floor(seconds / 60);
+    let secs = Math.floor(seconds % 60);
+
+    // add leading zero
+    if (secs < 10) {
+        secs = "0" + secs;
+    }
+    if (minutes < 10) {
+        minutes = "0" + minutes;
+    }
+
+    return `${minutes}:${secs}`;
+}
+
 async function getsongs() {
     let a = await fetch("http://127.0.0.1:5500/songs/")
     let response = await a.text();
@@ -19,12 +37,16 @@ async function getsongs() {
     return songs;
 }
 
-const playmusic=(track)=>{
+const playmusic=(track,pause=false)=>{
     // let audio =new Audio("/song/"+track)
     currentsong.src="/songs/"+track.trim();
-    currentsong.play();
-    play.src="pause.svg"
-    document.querySelector(".songinfo").innerHTML=track
+    if(!pause){
+         currentsong.play();
+         play.src="pause.svg"
+    }
+    // currentsong.play();
+    
+    document.querySelector(".songinfo").innerHTML=decodeURI(track)
     document.querySelector(".songtime").innerHTML="00:00/00:00"
 }
 
@@ -34,6 +56,7 @@ async function main() {
     //get the list of all songs
     let songs = await getsongs()
     // console.log(songs)
+    playmusic(songs[0],true)
 //play the first song
 //shows all the songs in the playlist
     let songul = document.querySelector(".songlist").getElementsByTagName("ul")[0]
@@ -80,7 +103,7 @@ play.addEventListener("click",()=>{
 //listnet for time update event
 currentsong.addEventListener("timeupdate",()=>{
     console.log(currentsong.currentTime,currentsong.duration);
-    
+    document.querySelector(".songtime").innerHTML=`${secondsToMinutesSeconds(currentsong.currentTime)}/${secondsToMinutesSeconds(currentsong.duration)}` 
 })
 }
 
