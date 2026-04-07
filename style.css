@@ -232,6 +232,7 @@ body{
     bottom: 3px;
     border-radius: 10px;
     margin: 6px;
+    cursor: pointer;
 }
 .circle{
     width: 11px;

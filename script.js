@@ -103,7 +103,12 @@ play.addEventListener("click",()=>{
 //listnet for time update event
 currentsong.addEventListener("timeupdate",()=>{
     console.log(currentsong.currentTime,currentsong.duration);
-    document.querySelector(".songtime").innerHTML=`${secondsToMinutesSeconds(currentsong.currentTime)}/${secondsToMinutesSeconds(currentsong.duration)}` 
+    document.querySelector(".songtime").innerHTML=`${secondsToMinutesSeconds(currentsong.currentTime)}/${secondsToMinutesSeconds(currentsong.duration)}`
+    document.querySelector(".circle").style.left=(currentsong.currentTime/currentsong.duration) * 100 + "%";
+})
+//add an eventlistner to seekbar
+document.querySelector(".seekbar").addEventListener("click", e=>{
+    console.log(e.offsetX)
 })
 }
 
