@@ -260,12 +260,18 @@ body{
 }
 @media (max-width: 900px) {
     .left{
-        background-color: red;
+       background-color: #000000;
         position: absolute;
         left:-100%;
         transition: all .3s;
         z-index: 1;
-        width: 233px;
+        width: 275px;
+    }
+    .left .close{
+     position: absolute;
+     right: 31px;
+     /* top: 25px;
+     width: 29px; */
     }
     .right{
         width: 100vw;
@@ -276,5 +282,7 @@ body{
     }
     .hamburger{
         display: inline;
+        height: 25px;
+        width: 25px;
     }
 }
