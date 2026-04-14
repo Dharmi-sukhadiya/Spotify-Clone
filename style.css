@@ -45,6 +45,9 @@ body{
     min-height: 73vh;
     position: relative;
 }
+.left .close{
+    display: none;
+}
 .footer{
     display: flex;
     font-size: 10px;
@@ -90,7 +93,7 @@ body{
     display: flex;
     flex-wrap: wrap;
     gap: 6px;
-    overflow-y: scroll;
+    overflow-y: auto;
     max-height: 73vh;
      scrollbar-width: thin;
   scrollbar-color: #2a2a2a #121212;
@@ -173,7 +176,7 @@ body{
   /* background-color: #565856; */
   width: 95%;
   padding: 5px;
-  height: 35px;
+  min-height: 35px;
   /* padding-top: 3px; */
   /* justify-content: center;
   align-items: center; */
@@ -257,21 +260,27 @@ body{
 .abovebar{
     display: flex;
     justify-content: space-between;
+    /* margin: 20px 0; */
 }
-@media (max-width: 900px) {
+@media (max-width: 1100px) {
     .left{
        background-color: #000000;
         position: absolute;
-        left:-100%;
+        left:-120%;
         transition: all .3s;
         z-index: 1;
-        width: 275px;
+        width: 300px;
+        /* width: 335; */
     }
     .left .close{
      position: absolute;
-     right: 31px;
-     /* top: 25px;
-     width: 29px; */
+     right: 25px;
+     top: 20px;
+     /* width:20px; */
+     display: inline;
+    }
+    .left .close img{
+        width: 15px;
     }
     .right{
         width: 100vw;

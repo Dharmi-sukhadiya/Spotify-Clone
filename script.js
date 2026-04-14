@@ -116,6 +116,10 @@ document.querySelector(".seekbar").addEventListener("click", e=>{
 document.querySelector(".hamburger").addEventListener("click",()=>{
     document.querySelector(".left").style.left = 0;
 }) 
+//add an event listner for close
+document.querySelector(".close").addEventListener("click",()=>{
+    document.querySelector(".left").style.left = "-120%";
+}) 
 }
 
 
