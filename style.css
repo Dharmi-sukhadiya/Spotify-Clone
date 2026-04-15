@@ -99,7 +99,7 @@ body{
   scrollbar-color: #2a2a2a #121212;
  }
  .card{
-    width: 147px;
+    width: 146px;
     padding: 10px;
     background-color: #121212;
     border-radius: 8px;
@@ -286,12 +286,30 @@ body{
         width: 100vw;
     }
     .playbar{
-        width: 95%
+        width: 95%;
+        /* width: calc(100vw - 50px); */
         /* cv */
+    }
+    .seekbar{
+        width: 95%;
+        /* width: calc(100vw - 50px); */
     }
     .hamburger{
         display: inline;
         height: 25px;
         width: 25px;
+    }
+    .cardcontainer{
+        justify-content: center;
+        margin: 0;
+    }
+    .card{
+        width: 70vw;
+    }
+    .abovebar{
+        flex-direction: column;
+        gap: 23px;
+        align-items: center;
+       padding: 20px;
     }
 }
