@@ -1,6 +1,7 @@
 console.log("js")
 let currentsong = new Audio();
 let songs;
+let currfolder;
 
 function secondsToMinutesSeconds(seconds) {
     if (isNaN(seconds)) return "00:00";
@@ -19,8 +20,8 @@ function secondsToMinutesSeconds(seconds) {
     return `${minutes}:${secs}`;
 }
 
-async function getsongs() {
-    let a = await fetch("http://127.0.0.1:5500/songs/")
+async function getsongs(folder) {
+    let a = await fetch(`http://127.0.0.1:5500/songs/$(folder)/`)
     let response = await a.text();
     console.log(response)
     let div = document.createElement("div")
@@ -31,7 +32,7 @@ async function getsongs() {
     for (let index = 0; index < as.length; index++) {
         const element = as[index];
         if (element.href.endsWith(".mp3")) {
-            songs.push(element.href.split("/songs/")[1].trim())
+            songs.push(element.href.split(`/$(folder)/`)[1].trim())
         }
     }
     // console.log(songs)
@@ -40,7 +41,7 @@ async function getsongs() {
 
 const playmusic = (track, pause = false) => {
     // let audio =new Audio("/song/"+track)
-    currentsong.src = "/songs/" + track.trim();
+    currentsong.src = `/$(folder)/` + track.trim();
     if (!pause) {
         currentsong.play();
         play.src = "pause.svg"
@@ -55,7 +56,7 @@ async function main() {
 
 
     //get the list of all songs
-    songs = await getsongs()
+    songs = await getsongs("songs/ncs")
     // console.log(songs)
     playmusic(songs[0], true)
     //play the first song
@@ -140,6 +141,10 @@ async function main() {
     })
 
     //add an event to volume
+    document.querySelector(".range").getElementsByTagName("input")[0].addEventListener("change",(e)=>{
+        console.log("setting volume to",e.target.value,"/100")
+        currentsong.volume=parseInt(e.target.value)/100
+    })
 }
 
 

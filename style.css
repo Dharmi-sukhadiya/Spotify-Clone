@@ -293,10 +293,10 @@ body {
     cursor: pointer;
 }
 
-.timevol{
-   display: flex;
-   justify-content: space-evenly;
-   align-items: center;
+.timevol {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
 }
 
 .songinfo,
@@ -309,12 +309,12 @@ body {
 /* .volume:hover::after{
     content: "after";
 } */
-.volume{
+.volume {
     display: flex;
     justify-content: center;
     align-items: center;
-   gap: 12px;
-   /* padding: 0px 10px; */
+    gap: 12px;
+    /* padding: 0px 10px; */
 }
 
 .abovebar {
@@ -399,7 +399,7 @@ body {
         width: auto;
     }
 
-    .timevol{
+    .timevol {
         flex-direction: column;
         gap: 18px;
     }
