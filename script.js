@@ -1,4 +1,4 @@
-console.log("js")
+console.log("lets write js")
 let currentsong = new Audio();
 let songs;
 let currfolder;
@@ -24,45 +24,21 @@ async function getsongs(folder) {
     currfolder=folder;
     let a = await fetch(`http://127.0.0.1:5500/${folder}/`)
     let response = await a.text();
-    console.log(response)
+    console.log(response)//response
     let div = document.createElement("div")
     div.innerHTML = response;
     let as = div.getElementsByTagName("a")
     // console.log(as)
-    let songs = []
+    songs = []
     for (let index = 0; index < as.length; index++) {
         const element = as[index];
         if (element.href.endsWith(".mp3")) {
             songs.push(element.href.split(`/${folder}/`)[1].trim())
         }
     }
-    // console.log(songs)
-    return songs;
-}
-
-const playmusic = (track, pause = false) => {
-    // let audio =new Audio("/song/"+track)
-    currentsong.src = `/${currfolder}/` + track.trim();
-    if (!pause) {
-        currentsong.play();
-        play.src = "pause.svg"
-    }
-    // currentsong.play();
-
-    document.querySelector(".songinfo").innerHTML = decodeURI(track)
-    document.querySelector(".songtime").innerHTML = "00:00/00:00"
-}
-
-async function main() {
-
-
-    //get the list of all songs
-    songs = await getsongs("songs/ncs")
-    // console.log(songs)
-    playmusic(songs[0], true)
-    //play the first song
-    //shows all the songs in the playlist
+     //shows all the songs in the playlist
     let songul = document.querySelector(".songlist").getElementsByTagName("ul")[0]
+    songul.innerHTML=" "
     // songul.innerHTML="";//clear first
     for (const song of songs) {
         songul.innerHTML = songul.innerHTML + `<li>
@@ -91,6 +67,52 @@ async function main() {
         })
 
     })
+    // console.log(songs)
+    
+}
+
+const playmusic = (track, pause = false) => {
+    // let audio =new Audio("/song/"+track)
+    currentsong.src = `/${currfolder}/` + track.trim();
+    if (!pause) {
+        currentsong.play();
+        play.src = "pause.svg"
+    }
+    // currentsong.play();
+
+    document.querySelector(".songinfo").innerHTML = decodeURI(track)
+    document.querySelector(".songtime").innerHTML = "00:00/00:00"
+}
+
+async function displayalbums() {
+     let a = await fetch(`http://127.0.0.1:5500/songs/`)
+    let response = await a.text();
+    console.log(response)//response
+    let div = document.createElement("div")
+    div.innerHTML = response;
+    let anchors = div.getElementsByTagName("a")
+    Array.from(anchors).forEach(e=>{
+        // console.log(e.href)
+
+        if(e.href.includes("/songs")){
+            console.log(e.href)
+        }
+    })
+    console.log(anchors)
+}
+
+async function main() {
+
+
+    //get the list of all songs
+   await getsongs("songs/ncs")
+    // console.log(songs)
+    playmusic(songs[0], true)
+    //play the first song
+   
+//dispay all the albums on the page
+displayalbums()
+
     //attach an event listner to play,next and previous
     play.addEventListener("click", () => {
         if (currentsong.paused) {
@@ -147,11 +169,20 @@ async function main() {
         currentsong.volume=parseInt(e.target.value)/100
     })
     //load the playlist when card is clicked
-    document.getElementsByClassName(".card").forEach(e=>{
-         e.addEventListener("click", async item=>{
-            songs = await getsongs("songs/ncs")
-            item.dataset.folder
-         })
+    // Array.from(document.getElementsByClassName("card")).forEach(e=>{
+    //      e.addEventListener("click", async item=>{
+    //         console.log(item, item.currentTarget.dataset.folder)
+    //         songs = await getsongs(`songs/${item.currentTarget.dataset.folder}`)
+            
+    //      })
+    // })
+    Array.from(document.getElementsByClassName("card")).forEach(e=>{
+        console.log(e)
+        e.addEventListener("click", async item=>{
+            console.log(item.target, item.currentTarget.dataset)
+            songs = await getsongs(`songs/${item.currentTarget.dataset.folder}`)
+           
+        })
     })
 }
 
