@@ -266,6 +266,7 @@ body {
 
 .hamburger {
     display: none;
+    cursor: pointer;
 }
 
 .info {
@@ -364,6 +365,7 @@ body {
 
     .left .close img {
         width: 15px;
+        cursor: pointer;
     }
 
     .songlist ul {
@@ -377,6 +379,9 @@ body {
 
     .playbar {
         width: 95%;
+         /* position: absolute; */
+    position: fixed;
+    bottom: 0;
         /* width: calc(100vw - 85px); */
         /* cv */
     }
@@ -390,11 +395,13 @@ body {
         display: inline;
         height: 25px;
         width: 25px;
+        cursor: pointer;
     }
 
     .cardcontainer {
         justify-content: center;
         margin: 0;
+        max-height: 65vh;
     }
 
     .card {
