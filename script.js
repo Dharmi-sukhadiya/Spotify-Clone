@@ -36,6 +36,8 @@ async function getsongs(folder) {
             songs.push(element.href.split(`/${folder}/`)[1].trim())
         }
     }
+
+    
     //shows all the songs in the playlist
     let songul = document.querySelector(".songlist").getElementsByTagName("ul")[0]
     songul.innerHTML = " "
@@ -68,7 +70,7 @@ async function getsongs(folder) {
 
     })
     // console.log(songs)
-
+return songs
 }
 
 const playmusic = (track, pause = false) => {
@@ -129,7 +131,7 @@ async function displayalbums() {
         e.addEventListener("click", async item => {
             console.log(item.target, item.currentTarget.dataset)
             songs = await getsongs(`songs/${item.currentTarget.dataset.folder}`)
-
+            playmusic(songs[0])
         })
     })
     // Array.from(anchors).forEach(e=>{
