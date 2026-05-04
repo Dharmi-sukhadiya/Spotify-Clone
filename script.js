@@ -45,14 +45,14 @@ async function getsongs(folder) {
     for (const song of songs) {
         songul.innerHTML = songul.innerHTML + `<li>
    
-                            <img class="invert" src="music.svg" alt="">
+                            <img class="invert" src="img/music.svg" alt="">
                             <div class="info">
                                 <div> ${song.replaceAll("%20", " ")}</div>
                                 <div>song artist</div>
                             </div>
                             <div class="playnow">
                                 <span>Play Now</span>
-                            <img class="invert" src="play.svg" alt="">
+                            <img class="invert" src="img/play.svg" alt="">
                             </div>
                     
 
@@ -78,7 +78,7 @@ const playmusic = (track, pause = false) => {
     currentsong.src = `/${currfolder}/` + track.trim();
     if (!pause) {
         currentsong.play();
-        play.src = "pause.svg"
+        play.src = "img/pause.svg"
     }
     // currentsong.play();
 
@@ -160,12 +160,12 @@ async function main() {
     play.addEventListener("click", () => {
         if (currentsong.paused) {
             currentsong.play()
-            play.src = "pause.svg"
+            play.src = "img/pause.svg"
 
         }
         else {
             currentsong.pause()
-            play.src = "play.svg"
+            play.src = "img/play.svg"
         }
     })
     //listnet for time update event
@@ -210,6 +210,9 @@ async function main() {
     document.querySelector(".range").getElementsByTagName("input")[0].addEventListener("change", (e) => {
         console.log("setting volume to", e.target.value, "/100")
         currentsong.volume = parseInt(e.target.value) / 100
+        if(currentsong.volume>0){
+             document.querySelector(".volume>img").src= document.querySelector(".volume>img").src.replace("mute.svg","volume.svg")
+        }
     })
 
 //add event listner to the mute the track

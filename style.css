@@ -378,13 +378,16 @@ body {
     }
 
     .playbar {
-        width: 95%;
+        width: 93%;
          /* position: absolute; */
     position: fixed;
     bottom: 0;
+    margin-bottom: 15px;
         /* width: calc(100vw - 85px); */
         /* cv */
+        align-items: center;
     }
+
 
     .seekbar {
         width: 95%;
@@ -398,11 +401,13 @@ body {
         cursor: pointer;
     }
 
-    .cardcontainer {
+     .cardcontainer {
         justify-content: center;
         margin: 0;
         max-height: 65vh;
+        margin-bottom: 20vh;
     }
+
 
     .card {
         width: 70vw;
