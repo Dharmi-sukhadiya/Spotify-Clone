@@ -232,6 +232,77 @@ document.querySelector(".volume>img").addEventListener("click",e=>{
         currentsong.volume=.10;
     }
 })
+
+
+// Get modal elements
+const modal = document.getElementById("loginModal");
+const loginBtn = document.querySelector(".Loginbtn");
+const signupBtn = document.querySelector(".Signupbtn");
+const closeBtn = document.querySelector(".close-modal");
+
+// Show modal when Login button is clicked
+loginBtn.addEventListener("click", () => {
+    modal.style.display = "block";
+});
+
+// Show modal when Signup button is clicked
+signupBtn.addEventListener("click", () => {
+    modal.style.display = "block";
+});
+
+// Hide modal when (x) is clicked
+closeBtn.addEventListener("click", () => {
+    modal.style.display = "none";
+});
+
+// Hide modal if user clicks anywhere outside of the modal box
+window.addEventListener("click", (event) => {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+});
+const modalTitle = document.querySelector(".modal-header h2");
+const modalBtn = document.querySelector(".modal-login-btn");
+const modellog = document.querySelector(".modal-footer");
+
+loginBtn.addEventListener("click", () => {
+    modal.style.display = "block";
+    modalTitle.innerHTML = "Log in to Spotify";
+    modalBtn.innerHTML = "Log In";
+});
+
+signupBtn.addEventListener("click", () => {
+    modal.style.display = "block";
+    modalTitle.innerHTML = "Sign up for Spotify";
+    modalBtn.innerHTML = "Sign Up";
+    // modellog.innerHTML="";
+    // modellog.style.display="none";
+    if(signupBtn){
+        modellog.style.display="none";
+    }
+});
+
+const loginForm = document.querySelector(".login-form");
+
+loginForm.addEventListener("submit", (e) => {
+    e.preventDefault(); // Prevents the page from refreshing
+    
+    const emailValue = document.querySelector('input[type="email"]').value;
+    const passwordValue = document.querySelector('input[type="password"]').value;
+
+    // Basic Validation Check
+    if (emailValue.includes("@") && passwordValue.length >= 6) {
+        alert("Success!");
+        modal.style.display = "none";
+        
+        // Change Login Button to "Logout"
+        loginBtn.innerHTML = "Log Out";
+        loginBtn.style.width="90px"
+    } else {
+        alert("Please enter a valid email and a password with at least 6 characters.");
+    }
+});
+
 }
 
 
