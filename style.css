@@ -123,6 +123,15 @@ body {
     padding: 0;  */
     
 }
+.cardcontainer h2{
+    font-size: 20px;
+    font-weight: 1000 ;
+    
+}
+.cardcontainer p{
+    font-size: 14px;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif
+}
 
 .card {
     width: 146px;
@@ -141,7 +150,7 @@ body {
 
 .play {
     position: absolute;
-    bottom: 90px;
+    bottom: 58px;
     right: 15px;
     background-color: #1fdf64;
     width: 45px;
@@ -224,6 +233,9 @@ body {
     display: flex;
     justify-content: center;
     gap: 16px;
+}
+.songinfo, .songbuttons, .timevol {
+    width: 33%;
 }
 
 .songlist {

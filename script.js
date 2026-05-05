@@ -210,8 +210,11 @@ async function main() {
     document.querySelector(".range").getElementsByTagName("input")[0].addEventListener("change", (e) => {
         console.log("setting volume to", e.target.value, "/100")
         currentsong.volume = parseInt(e.target.value) / 100
-        if(currentsong.volume>0){
+        if(currentsong.volume > 0){
              document.querySelector(".volume>img").src= document.querySelector(".volume>img").src.replace("mute.svg","volume.svg")
+        }
+        else{
+            document.querySelector(".volume>img").src= document.querySelector(".volume>img").src.replace("volume.svg","mute.svg")
         }
     })
 
