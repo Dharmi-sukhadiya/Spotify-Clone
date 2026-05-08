@@ -104,12 +104,13 @@ body {
 /* .spotifyplaylist .card{
     width: 100px;
 } */
- .main-container{
-        padding-left: 0;
+.main-container {
+    padding-left: 0;
     margin-left: 0;
     padding-right: 0;
     margin-right: 0;
- }
+}
+
 .cardcontainer {
     display: flex;
     flex-wrap: wrap;
@@ -121,14 +122,16 @@ body {
     /* justify-content: flex-start;
     margin: 0; 
     padding: 0;  */
-    
+
 }
-.cardcontainer h2{
+
+.cardcontainer h2 {
     font-size: 20px;
-    font-weight: 1000 ;
-    
+    font-weight: 1000;
+
 }
-.cardcontainer p{
+
+.cardcontainer p {
     font-size: 14px;
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif
 }
@@ -220,10 +223,7 @@ body {
     width: 95%;
     padding: 5px;
     min-height: 35px;
-    /* padding-top: 3px; */
-    /* justify-content: center;
-  align-items: center; */
-    /* padding-left: 0%; */
+
     filter: invert(1);
     background: #cfcbcb;
     border-radius: 30px;
@@ -234,15 +234,13 @@ body {
     justify-content: center;
     gap: 16px;
 }
-.songinfo, .songbuttons, .timevol {
+
+.songinfo,
+.songbuttons,
+.timevol {
     width: 33%;
 }
-/* 
-.library{
-    display: flex;
-    flex-direction: column;
-    height: 100%; 
-} */
+
 .songlist {
     flex-grow: 1;
     /* height: 340px;
@@ -279,8 +277,9 @@ body {
     align-items: center;
 
 }
-.info{
-     display: flex;
+
+.info {
+    display: flex;
     /* justify-content: center; */
     align-items: center;
 }
@@ -344,9 +343,6 @@ body {
     /* width: 200px; */
 }
 
-/* .volume:hover::after{
-    content: "after";
-} */
 .volume {
     display: flex;
     justify-content: center;
@@ -355,7 +351,8 @@ body {
     cursor: pointer;
     /* padding: 0px 10px; */
 }
-.range input{
+
+.range input {
     cursor: pointer;
 }
 
@@ -369,23 +366,24 @@ body {
 
 
 
-/* The Modal (background) */
 .modal {
-    display: none; 
-    position: fixed; 
-    z-index: 10; /* Sits on top of the playbar and cards */
+    display: none;
+    position: fixed;
+    z-index: 10;
+
     left: 0;
     top: 0;
-    width: 100%; 
-    height: 100%; 
-    background-color: rgba(0, 0, 0, 0.8); /* Black background with opacity */
-    backdrop-filter: blur(5px); /* Optional: blurs the background */
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    /* Black background with opacity */
+    backdrop-filter: blur(5px);
 }
 
 /* Modal Content Box */
 .modal-content {
     background-color: #121212;
-    margin: 10% auto; 
+    margin: 10% auto;
     padding: 40px;
     border-radius: 12px;
     width: 400px;
@@ -444,7 +442,8 @@ body {
 .toast {
     visibility: hidden;
     min-width: 250px;
-    background-color: #1DB954; /* Spotify Green */
+    background-color: #1DB954;
+    /* Spotify Green */
     color: #fff;
     text-align: center;
     border-radius: 50px;
@@ -455,7 +454,7 @@ body {
     bottom: 30px;
     transform: translateX(-50%);
     font-weight: bold;
-    box-shadow: 0px 4px 15px rgba(0,0,0,0.3);
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.3);
 }
 
 .toast.show {
@@ -463,16 +462,41 @@ body {
     animation: fadein 0.5s, fadeout 0.5s 2.5s;
 }
 
-@keyframes fadein { from {bottom: 0; opacity: 0;} to {bottom: 30px; opacity: 1;} }
-@keyframes fadeout { from {bottom: 30px; opacity: 1;} to {bottom: 0; opacity: 0;} }
+@keyframes fadein {
+    from {
+        bottom: 0;
+        opacity: 0;
+    }
+
+    to {
+        bottom: 30px;
+        opacity: 1;
+    }
+}
+
+@keyframes fadeout {
+    from {
+        bottom: 30px;
+        opacity: 1;
+    }
+
+    to {
+        bottom: 0;
+        opacity: 0;
+    }
+}
 
 #searchInput {
     width: 15vw;
-    background-color: #242424; /* Darker background */
-    color: white;              /* White text */
-    border: 1px solid transparent; 
-    border-radius: 500px;      /* Fully rounded pill shape */
-    padding: 8px 10px 8px 20px; /* Extra padding on left for an icon */
+    background-color: #242424;
+    /* Darker background */
+    color: white;
+    /* White text */
+    border: 1px solid transparent;
+    border-radius: 500px;
+    /* Fully rounded pill shape */
+    padding: 8px 10px 8px 20px;
+    /* Extra padding on left for an icon */
     font-size: 10px;
     margin: 0px;
     display: block;
@@ -501,49 +525,32 @@ body {
         font-weight: 800;
     }
 
-    /* .left {
-        background-color: #000000;
-        position: absolute;
-        left: -120%;
-        transition: all .3s;
-        z-index: 1;
-        width: 300px;
-        
-        bottom: 0;
-        max-height: auto;
-        top: 0;
-    } */
-     /* .left {
-    
-    background-color: #000000;
-    position: absolute;
-    left: -120%; 
-    transition: all .3s;
-    z-index: 1;
-    width: 300px;
-    top: 0;
-    bottom: 0;
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-} */
+
     .library {
-    flex-grow: 1; /* This tells the library to take up all remaining space */
-    display: flex;
-    flex-direction: column;
-    position: relative;
-    margin-bottom: 0; /* Remove margin so it touches the bottom */
-    max-height: auto;/* Important for scrollable areas inside flex */
-}
-.footer {
-    padding: 20px 10px;
-    background-color: inherit; /* Matches library color */
-}
-.songlist {
-    flex-grow: 1; 
-    overflow-y: auto;
-    margin-bottom: 50px; /* Leave space for the footer if needed */
-}
+        flex-grow: 1;
+        /* This tells the library to take up all remaining space */
+        display: flex;
+        flex-direction: column;
+        position: relative;
+        margin-bottom: 0;
+        /* Remove margin so it touches the bottom */
+        max-height: auto;
+        /* Important for scrollable areas inside flex */
+    }
+
+    .footer {
+        padding: 20px 10px;
+        background-color: inherit;
+        /* Matches library color */
+    }
+
+    .songlist {
+        flex-grow: 1;
+        overflow-y: auto;
+        margin-bottom: 50px;
+        /* Leave space for the footer if needed */
+    }
+
     .left .close {
         position: absolute;
         right: 25px;
@@ -566,17 +573,17 @@ body {
         width: 100vw;
     }
 
-.buttons>* {
-    margin: 0;
-    /* top-bottom left-right */
-}
+    .buttons>* {
+        margin: 0;
+        /* top-bottom left-right */
+    }
 
     .playbar {
         width: 93%;
-         /* position: absolute; */
-    position: fixed;
-    bottom: 0;
-    margin-bottom: 15px;
+        /* position: absolute; */
+        position: fixed;
+        bottom: 0;
+        margin-bottom: 15px;
         /* width: calc(100vw - 85px); */
         /* cv */
         align-items: center;
@@ -595,7 +602,7 @@ body {
         cursor: pointer;
     }
 
-     .cardcontainer {
+    .cardcontainer {
         justify-content: center;
         margin: 0;
         max-height: 65vh;
@@ -623,46 +630,57 @@ body {
         flex-direction: column;
         gap: 18px;
     }
-    
+
     .left {
         position: fixed;
         top: 0;
         /* Change from 100vw to something slightly less if you want to see the background */
         left: -120%;
-       max-height: auto;
-        width: 100vw; /* Ensures it never exceeds 80% of any phone screen */
+        max-height: auto;
+        width: 100vw;
+        /* Ensures it never exceeds 80% of any phone screen */
         height: 100dvh;
         background-color: #000;
         z-index: 100;
         transition: all 0.3s ease;
-        padding: 10px; /* This adds space on all sides inside the black area */
-        box-sizing: border-box; /* Crucial: includes padding in the width calculation */
+        padding: 10px;
+        box-sizing: border-box;
+
     }
 
     .library {
-        height: 80vh; /* Give it a defined height so it scrolls */
+        height: 80vh;
+        /* Give it a defined height so it scrolls */
         overflow-y: hidden;
         display: flex;
         flex-direction: column;
     }
 
     .songlist {
-        flex: 1; /* Stretch to fill space */
-        overflow-y: auto; /* Make ONLY the songs scrollable */
-        padding-bottom: 100px; /* Space so the last song isn't hidden by playbar */
+        flex: 1;
+       
+        overflow-y: auto;
+       
+        padding-bottom: 100px;
+       
     }
+
     .modal-content {
-    background-color: #121212;
-    margin: 15% auto; 
-    padding: 20px; /* Reduced padding for mobile */
-    border-radius: 12px;
-    width: 90%; /* Use percentage instead of fixed px */
-    max-width: 400px; /* Only be 400px on big screens */
-    position: relative;
-    color: white;
-}
-#searchInput{
-    width: max-content;
-    box-sizing: border-box;
-}
+        background-color: #121212;
+        margin: 15% auto;
+        padding: 20px;
+        /* Reduced padding for mobile */
+        border-radius: 12px;
+        width: 90%;
+        /* Use percentage instead of fixed px */
+        max-width: 400px;
+        /* Only be 400px on big screens */
+        position: relative;
+        color: white;
+    }
+
+    #searchInput {
+        width: max-content;
+        box-sizing: border-box;
+    }
 }
