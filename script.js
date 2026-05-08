@@ -1,3 +1,19 @@
+const allSongs = [
+    { name: "Bairan.mp3", artist: "Artist Name", file: "songs/Bairan.mp3" },
+    { name: "Gehra Hua.mp3", artist: "Artist Name", file: "songs/Gehra hua.mp3" },
+    { name: "Khat.mp3", artist: "Artist Name", file: "songs/khat.mp3" },
+    { name: "Ud-daa Punjab.mp3", artist: "Artist Name", file: "songs/Ud-daa Punjab.mp3" },
+    { name: "APT..mp3", artist: "Artist Name", file: "songs/APT..mp3" },
+    { name: "Bright.mp3", artist: "Artist Name", file: "songs/Bright.mp3" },
+    { name: "waka waka.mp3", artist: "Artist Name", file: "songs/waka waka.mp3" },
+    { name: "Born to shine.mp3", artist: "Artist Name", file: "songs/Born to Shine.mp3" },
+    { name: "Subha Hone Na De.mp3", artist: "Artist Name", file: "songs/Subha Hone Na De.mp3" },
+    { name: "Naina.mp3", artist: "Artist Name", file: "songs/Naina.mp3" },
+    { name: "Lutt Le Gaya.mp3", artist: "Artist Name", file: "songs/Lutt Le Gaya.mp3" }
+
+   
+];
+
 console.log("lets write js")
 let currentsong = new Audio();
 let songs;
@@ -48,7 +64,7 @@ async function getsongs(folder) {
                             <img class="invert" src="img/music.svg" alt="">
                             <div class="info">
                                 <div> ${song.replaceAll("%20", " ")}</div>
-                                <div>song artist</div>
+                               
                             </div>
                             <div class="playnow">
                                 <span>Play Now</span>
@@ -284,22 +300,111 @@ signupBtn.addEventListener("click", () => {
 
 const loginForm = document.querySelector(".login-form");
 
+// 1. Move showToast outside so it's a "global" tool
+function showToast(message) {
+    const toast = document.getElementById("toast");
+    toast.innerText = message; // Set the message dynamically
+    toast.className = "toast show";
+    
+    setTimeout(() => { 
+        toast.className = toast.className.replace("show", ""); 
+    }, 3000);
+}
+
+// 2. Updated Login/Signup Form Logic
 loginForm.addEventListener("submit", (e) => {
-    e.preventDefault(); // Prevents the page from refreshing
+    e.preventDefault(); 
     
     const emailValue = document.querySelector('input[type="email"]').value;
     const passwordValue = document.querySelector('input[type="password"]').value;
 
     // Basic Validation Check
     if (emailValue.includes("@") && passwordValue.length >= 6) {
-        alert("Success!");
+        
+        // Check if we are currently in "Login" mode or "Signup" mode
+        if (modalBtn.innerHTML === "Log In") {
+            showToast("Welcome Back! Logged In Successfully.");
+            loginBtn.innerHTML = "Log Out";
+            loginBtn.style.width = "85px";
+        } else {
+            showToast("Account Created! You can now Log In.");
+            // Optional: reset button to Login after signup
+            modalTitle.innerHTML = "Log in to Spotify";
+            modalBtn.innerHTML = "Log In";
+        }
+
+        // Close the modal
         modal.style.display = "none";
         
-        // Change Login Button to "Logout"
-        loginBtn.innerHTML = "Log Out";
-        loginBtn.style.width="90px"
     } else {
-        alert("Please enter a valid email and a password with at least 6 characters.");
+        // Instead of a bad-looking alert, use your toast for errors too!
+        showToast("Invalid email or password (min 6 chars)");
+        const toast = document.getElementById("toast");
+        toast.style.backgroundColor = "#e91e63"; // Turn it red for errors
+    }
+});
+
+const searchInput = document.getElementById('searchInput');
+
+// // Listen for when the user types
+// searchInput.addEventListener('keyup', () => {
+//     const filter = searchInput.value.toLowerCase();
+//     const songItems = document.querySelectorAll('.songlist li'); // Replace 'li' with your song card class
+
+//     songItems.forEach(song => {
+//         // Get the text content of the song name
+//         const songName = song.textContent.toLowerCase();
+        
+//         // If the name matches, show it; otherwise, hide it
+//         if (songName.includes(filter)) {
+//             song.style.display = ""; 
+//         } else {
+//             song.style.display = "none";
+//         }
+//     });
+// });
+const songListContainer = document.querySelector(".songlist ul");
+
+function displaySongs(songsToRender) {
+    // Clear the current list
+    songListContainer.innerHTML = "";
+
+    // Add each song from the filtered list
+    songsToRender.forEach(song => {
+        const li = document.createElement("li");
+        li.innerHTML = `
+            <img class="invert" src="img/music.svg" alt="">
+            <div class="info">
+                <div>${song.name}</div>
+             
+            </div>
+            <div class="playnow">
+                <span>Play Now</span>
+                <img class="invert" src="img/play.svg" alt="">
+            </div>`;
+        songListContainer.appendChild(li);
+    });
+}
+
+// Show all songs initially
+displaySongs(allSongs);
+searchInput.addEventListener('input', () => {
+    const query = searchInput.value.toLowerCase();
+
+    // Filter the master array
+    const filtered = allSongs.filter(song => 
+        song.name.toLowerCase().includes(query) || 
+        song.artist.toLowerCase().includes(query)
+    );
+
+    // Re-render the list with only the matches
+    displaySongs(filtered);
+});
+songListContainer.addEventListener("click", (e) => {
+    const clickedSong = e.target.closest("li");
+    if (clickedSong) {
+        const trackName = clickedSong.querySelector(".info div").innerText.trim();
+        playmusic(trackName); // Ensure your actual play function is named playMusic
     }
 });
 
