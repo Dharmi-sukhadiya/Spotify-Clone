@@ -30,17 +30,8 @@ async function getsongs(folder) {
             'O Beliya.mp3',
             'Saajan Ve.mp3'
             // Add ALL your actual .mp3 file names here
-        ],
-        'Arijit_Singh': [           // Example: Add your other albums
-            'Tum Hi Ho.mp3',
-            'Channa Mereya.mp3'
-            // Add more songs
-        ],
-        'Your_Third_Album': [       // Add as many albums as you have
-            'song1.mp3',
-            'song2.mp3'
         ]
-        // Add more album folders as needed
+        
     };
     // ========================================
     
