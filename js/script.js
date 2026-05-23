@@ -22,6 +22,13 @@ function secondsToMinutesSeconds(seconds) {
 
 async function getsongs(folder) {
     currfolder = folder;
+// Fetch the manifest instead of directory listing
+    let response = await fetch(`/songs-manifest.json`);
+    let manifest = await response.json();
+    
+    // Get songs for the specific folder
+    songs = manifest[folder.split('/').pop()] || [];
+    
     let a = await fetch(`/${folder}/`)
     let response = await a.text();
     console.log(response)//response
