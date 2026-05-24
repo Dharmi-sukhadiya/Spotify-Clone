@@ -23,21 +23,63 @@ function secondsToMinutesSeconds(seconds) {
 async function getsongs(folder) {
     currfolder = folder;
 
-// ===== DEFINE ALL YOUR SONGS HERE =====
+    // ===== DEFINE ALL YOUR SONGS HERE =====
     const songsByFolder = {
         'Darshan_Raval': [
             'Mannat.mp3',
             'O Beliya.mp3',
             'Saajan Ve.mp3'
             // Add ALL your actual .mp3 file names here
-        ]
-        
+        ],
+        'Angry_(mood)': [
+            'Ud-daa Punjab.mp3',
+            'Angry.mp3',
+            'Go Down Deh.mp3',
+            ],
+        'Bright_(mood)': [
+            'APT..mp3',
+            'Bright.mp3',
+            'Waka Waka.mp3'],
+        'Chill_(mood)': [
+            'Born to Shine.mp3',
+            'Naina (From _Crew).mp3',
+            'Subha Hone Na De.mp3'],
+        'cs': [
+            'Naina (From _Crew).mp3',
+            'Saiyyan.mp3',
+            'Subha Hone Na De.mp3'
+        ],
+        'Dark_(mood)': [
+            'Die With Smile.mp3',
+            'I Think They Call This Love.mp3',
+            'Gehra Hua.mp3'
+        ],
+        'Funky_(mood)': [
+            'Kya Karu _.mp3',
+            'Lutt Le Gaya.mp3',
+            'Paon Ki Jutti.mp3',
+            'Subha Hone Na De.mp3'
+        ],
+        'karan aujla': [
+            'Boyfriend.mp3',
+            'For A Reason.mp3'],
+        'Love_(mood)': [
+            'Gehra Hua.mp3',
+            'Saiyaara.mp3',
+            'Saiyyan.mp3'],
+        'ncs': [
+            'Bairan.mp3',
+            'Khat.mp3'],
+        'Uplifting_(mood)': [
+            'Go Down Deh.mp3']
+
+
     };
     // ========================================
-    
+
     // Get songs for the requested folder
     songs = songsByFolder[folder.split('/').pop()] || [];
-    
+
 
     // let a = await fetch(`/${folder}/`)
     // let response = await a.text();
@@ -54,7 +96,7 @@ async function getsongs(folder) {
     //     }
     // }
 
-    
+
     //shows all the songs in the playlist
     let songul = document.querySelector(".songlist").getElementsByTagName("ul")[0]
     songul.innerHTML = " "
@@ -87,7 +129,7 @@ async function getsongs(folder) {
 
     })
     // console.log(songs)
-return songs
+    return songs
 }
 
 const playmusic = (track, pause = false) => {
@@ -104,22 +146,63 @@ const playmusic = (track, pause = false) => {
 }
 
 async function displayalbums() {
-     const albums = [
+    const albums = [
         {
             folder: 'Darshan_Raval',
             title: 'Darshan Raval',
-            description: 'Best hits of Darshan Raval'
+            description: 'Darshan Raval hits'
         },
         {
-            folder: 'Arijit_Singh',
-            title: 'Arijit Singh',
-            description: 'Soulful melodies'
+            folder: 'Angry_(mood)',
+            title: 'Angry Mood',
+            description: 'Calm your Anger'
         },
         {
-            folder: 'Your_Third_Album',
-            title: 'Your Album Title',
-            description: 'Your album description'
+            folder: 'Bright_(mood)',
+            title: 'Bright Songs',
+            description: 'Bright Songs for you'
+        },
+        {
+            folder: 'Chill_(mood)',
+            title: 'Just Chill',
+            description: 'Yes, Just Chill'
+        },
+        {
+            folder: 'cs',
+            title: 'Copyright Songs',
+            description: 'Cover Songs for you'
+        },
+        {
+            folder: 'Dark_(mood)',
+            title: 'Dark Horse',
+            description: 'Dark Songs for you'
+        },
+        {
+            folder: 'Funky_(mood)',
+            title: 'Go Funky',
+            description: 'Lets go Funky'
+        },
+        {
+            folder: 'karan aujla',
+            title: 'Karan Aujla',
+            description: 'Karan Aujla for you'
+        },
+        {
+            folder: 'Love_(mood)',
+            title: 'I Love You',
+            description: 'Love is in the air'
+        },
+        {
+            folder: 'ncs',
+            title: 'Sleep Songs',
+            description: 'Songs for you'
+        },
+        {
+            folder: 'Uplifting_(mood)',
+            title: 'Get up',
+            description: 'You can do it!'
         }
+
         // Add all your albums here
     ];
 
@@ -193,145 +276,159 @@ async function main() {
     document.querySelector(".close").addEventListener("click", () => {
         document.querySelector(".left").style.left = "-120%";
     })
-    //add an event listner to previous 
-    document.querySelector("#previous").addEventListener("click", () => {
-        console.log("previos click")
-        console.log(currentsong);
-        let index = songs.indexOf(currentsong.src.split("/").slice(-1)[0]);
-        if ((index - 1) >= 0) {
-            playmusic(songs[index - 1])
-        }
-    })
-    //add an event listner to  next
-    document.querySelector("#next").addEventListener("click", () => {
-        console.log("next click")
-        let index = songs.indexOf(currentsong.src.split("/").slice(-1)[0]);
-        if ((index + 1) < songs.length) {
-            playmusic(songs[index + 1])
-        }
-    })
+   // Previous Button
+document.querySelector("#previous").addEventListener("click", () => {
 
+    let currentSongName = decodeURIComponent(
+        currentsong.src.split("/").pop()
+    );
+
+    let index = songs.indexOf(currentSongName);
+
+    console.log(index);
+
+    if (index > 0) {
+        playmusic(songs[index - 1]);
+    }
+});
+
+
+// Next Button
+document.querySelector("#next").addEventListener("click", () => {
+
+    let currentSongName = decodeURIComponent(
+        currentsong.src.split("/").pop()
+    );
+
+    let index = songs.indexOf(currentSongName);
+
+    console.log(index);
+
+    if (index < songs.length - 1) {
+        playmusic(songs[index + 1]);
+    }
+});
     //add an event to volume
     document.querySelector(".range").getElementsByTagName("input")[0].addEventListener("change", (e) => {
         console.log("setting volume to", e.target.value, "/100")
         currentsong.volume = parseInt(e.target.value) / 100
-        if(currentsong.volume > 0){
-             document.querySelector(".volume>img").src= document.querySelector(".volume>img").src.replace("mute.svg","volume.svg")
+        if (currentsong.volume > 0) {
+            document.querySelector(".volume>img").src = document.querySelector(".volume>img").src.replace("mute.svg", "volume.svg")
         }
-        else{
-            document.querySelector(".volume>img").src= document.querySelector(".volume>img").src.replace("volume.svg","mute.svg")
+        else {
+            document.querySelector(".volume>img").src = document.querySelector(".volume>img").src.replace("volume.svg", "mute.svg")
         }
     })
 
-//add event listner to the mute the track
-document.querySelector(".volume>img").addEventListener("click",e=>{
-    console.log(e.target)
-    if(e.target.src.includes("volume.svg")){
-        e.target.src= e.target.src.replace("volume.svg","mute.svg")
-        document.querySelector(".range").getElementsByTagName("input")[0].value=0;
-        currentsong.volume=0;
-    }
-    else{
-         e.target.src= e.target.src.replace("mute.svg","volume.svg")
-          document.querySelector(".range").getElementsByTagName("input")[0].value=10;
-        currentsong.volume=.10;
-    }
-})
-
-
-// Get modal elements
-const modal = document.getElementById("loginModal");
-const loginBtn = document.querySelector(".Loginbtn");
-const signupBtn = document.querySelector(".Signupbtn");
-const closeBtn = document.querySelector(".close-modal");
-
-// Show modal when Login button is clicked
-loginBtn.addEventListener("click", () => {
-    modal.style.display = "block";
-});
-
-// Show modal when Signup button is clicked
-signupBtn.addEventListener("click", () => {
-    modal.style.display = "block";
-});
-
-// Hide modal when (x) is clicked
-closeBtn.addEventListener("click", () => {
-    modal.style.display = "none";
-});
-
-// Hide modal if user clicks anywhere outside of the modal box
-window.addEventListener("click", (event) => {
-    if (event.target == modal) {
-        modal.style.display = "none";
-    }
-});
-const modalTitle = document.querySelector(".modal-header h2");
-const modalBtn = document.querySelector(".modal-login-btn");
-const modellog = document.querySelector(".modal-footer");
-
-loginBtn.addEventListener("click", () => {
-    modal.style.display = "block";
-    modalTitle.innerHTML = "Log in to Spotify";
-    modalBtn.innerHTML = "Log In";
-});
-
-signupBtn.addEventListener("click", () => {
-    modal.style.display = "block";
-    modalTitle.innerHTML = "Sign up for Spotify";
-    modalBtn.innerHTML = "Sign Up";
-    // modellog.innerHTML="";
-    // modellog.style.display="none";
-    if(signupBtn){
-        modellog.style.display="none";
-    }
-});
-
-const loginForm = document.querySelector(".login-form");
-
-// 1. Move showToast outside so it's a "global" tool
-function showToast(message) {
-    const toast = document.getElementById("toast");
-    toast.innerText = message; // Set the message dynamically
-    toast.className = "toast show";
-    
-    setTimeout(() => { 
-        toast.className = toast.className.replace("show", ""); 
-    }, 3000);
-}
-
-// 2. Updated Login/Signup Form Logic
-loginForm.addEventListener("submit", (e) => {
-    e.preventDefault(); 
-    
-    const emailValue = document.querySelector('input[type="email"]').value;
-    const passwordValue = document.querySelector('input[type="password"]').value;
-
-    // Basic Validation Check
-    if (emailValue.includes("@") && passwordValue.length >= 6) {
-        
-        // Check if we are currently in "Login" mode or "Signup" mode
-        if (modalBtn.innerHTML === "Log In") {
-            showToast("Welcome Back! Logged In Successfully.");
-            loginBtn.innerHTML = "Log Out";
-            loginBtn.style.width = "85px";
-        } else {
-            showToast("Account Created! You can now Log In.");
-            // Optional: reset button to Login after signup
-            modalTitle.innerHTML = "Log in to Spotify";
-            modalBtn.innerHTML = "Log In";
+    //add event listner to the mute the track
+    document.querySelector(".volume>img").addEventListener("click", e => {
+        console.log(e.target)
+        if (e.target.src.includes("volume.svg")) {
+            e.target.src = e.target.src.replace("volume.svg", "mute.svg")
+            document.querySelector(".range").getElementsByTagName("input")[0].value = 0;
+            currentsong.volume = 0;
         }
+        else {
+            e.target.src = e.target.src.replace("mute.svg", "volume.svg")
+            document.querySelector(".range").getElementsByTagName("input")[0].value = 10;
+            currentsong.volume = .10;
+        }
+    })
 
-        // Close the modal
+
+    // Get modal elements
+    const modal = document.getElementById("loginModal");
+    const loginBtn = document.querySelector(".Loginbtn");
+    const signupBtn = document.querySelector(".Signupbtn");
+    const closeBtn = document.querySelector(".close-modal");
+
+    // Show modal when Login button is clicked
+    loginBtn.addEventListener("click", () => {
+        modal.style.display = "block";
+    });
+
+    // Show modal when Signup button is clicked
+    signupBtn.addEventListener("click", () => {
+        modal.style.display = "block";
+    });
+
+    // Hide modal when (x) is clicked
+    closeBtn.addEventListener("click", () => {
         modal.style.display = "none";
-        
-    } else {
-        // Instead of a bad-looking alert, use your toast for errors too!
-        showToast("Invalid email or password (min 6 chars)");
+    });
+
+    // Hide modal if user clicks anywhere outside of the modal box
+    window.addEventListener("click", (event) => {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    });
+    const modalTitle = document.querySelector(".modal-header h2");
+    const modalBtn = document.querySelector(".modal-login-btn");
+    const modellog = document.querySelector(".modal-footer");
+
+    loginBtn.addEventListener("click", () => {
+        modal.style.display = "block";
+        modalTitle.innerHTML = "Log in to Spotify";
+        modalBtn.innerHTML = "Log In";
+    });
+
+    signupBtn.addEventListener("click", () => {
+        modal.style.display = "block";
+        modalTitle.innerHTML = "Sign up for Spotify";
+        modalBtn.innerHTML = "Sign Up";
+        // modellog.innerHTML="";
+        // modellog.style.display="none";
+        if (signupBtn) {
+            modellog.style.display = "none";
+        }
+    });
+
+    const loginForm = document.querySelector(".login-form");
+
+    // 1. Move showToast outside so it's a "global" tool
+    function showToast(message) {
         const toast = document.getElementById("toast");
-        toast.style.backgroundColor = "#e91e63"; // Turn it red for errors
+        toast.innerText = message; // Set the message dynamically
+        toast.className = "toast show";
+
+        setTimeout(() => {
+            toast.className = toast.className.replace("show", "");
+        }, 3000);
     }
-});
+
+    // 2. Updated Login/Signup Form Logic
+    loginForm.addEventListener("submit", (e) => {
+        e.preventDefault();
+
+        const emailValue = document.querySelector('input[type="email"]').value;
+        const passwordValue = document.querySelector('input[type="password"]').value;
+
+        // Basic Validation Check
+        if (emailValue.includes("@") && passwordValue.length >= 6) {
+
+            // Check if we are currently in "Login" mode or "Signup" mode
+            if (modalBtn.innerHTML === "Log In") {
+                showToast("Welcome Back! Logged In Successfully.");
+                loginBtn.innerHTML = "Log Out";
+                loginBtn.style.width = "85px";
+            } else {
+                showToast("Account Created! You can now Log In.");
+                // Optional: reset button to Login after signup
+                modalTitle.innerHTML = "Log in to Spotify";
+                modalBtn.innerHTML = "Log In";
+            }
+
+            // Close the modal
+            modal.style.display = "none";
+
+        } else {
+            // Instead of a bad-looking alert, use your toast for errors too!
+            showToast("Invalid email or password (min 6 chars)");
+            const toast = document.getElementById("toast");
+            toast.style.backgroundColor = "#e91e63"; // Turn it red for errors
+        }
+    });
 
 
 
